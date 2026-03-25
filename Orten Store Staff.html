@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orten Store Staff</title>
+<link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1483620716212654181/1484315609087868988/Logo_2.png?ex=69bdc822&is=69bc76a2&hm=fc50258d226af183d0862b13bea5fa8d28dd79e597c99f0d5928a90474ad0f4e&">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #05080f; --accent-blue: #5c85d6;
+  --card-bg: #0a0e17; --border-color: rgba(255, 255, 255, 0.08);
+  --text-main: #ffffff; --text-muted: #a0aec0;
+}
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Cairo', sans-serif;}
+body { background-color: var(--bg-dark); color: var(--text-main); }
+header { display:flex; justify-content: space-between; align-items:center; padding:15px 20px; background: rgba(5,8,15,0.9); border-bottom:1px solid var(--border-color); position: sticky; top:0; z-index:100; }
+header h1 { color: var(--accent-blue); font-size:24px;}
+nav span { cursor:pointer; margin:0 10px; font-weight:600; color: var(--text-muted); transition:0.3s; position: relative; }
+nav span.active { color: var(--accent-blue);}
+nav span.active::after { content:''; position:absolute; bottom:-5px; left:0; width:100%; height:2px; background: var(--accent-blue);}
+.container { max-width:1200px; margin:auto; padding:60px 20px; text-align:center; }
+.content-section { display:none; opacity:0; transform:translateY(30px); transition: all 0.6s cubic-bezier(0.22,1,0.36,1); }
+.content-section.active { display:block; opacity:1; transform:translateY(0);}
+.pricing-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:20px; margin-top:40px; }
+.price-card { background: var(--card-bg); padding:25px 20px; border-radius:20px; border:1px solid var(--border-color); display:flex; flex-direction:column; align-items:center;}
+.price-card h3 { font-size:20px; margin-bottom:10px; color: var(--accent-blue);}
+.price-card input { width:60px; padding:5px; margin-bottom:10px; border-radius:6px; border:1px solid var(--border-color); background:#111d35; color:#fff; text-align:center;}
+.price-card span { font-weight:700; font-size:16px;}
+.performance { font-size:14px; font-weight:600; margin-top:5px; }
+.total-box { margin-top:30px; padding:20px; border:1px solid var(--border-color); border-radius:15px; background:rgba(255,255,255,0.03);}
+.tips-box, .strategy-box { background: rgba(255,255,255,0.03); padding:30px; border-radius:20px; border:1px solid var(--border-color); margin-top:20px; text-align:right; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Orten Store Staff</h1>
+  <nav>
+    <span class="active" onclick="showSection('products')">المنتجات</span>
+    <span onclick="showSection('tips')">التوقعات والنصائح</span>
+    <span onclick="showSection('strategy')">استراتيجية النمو</span>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- صفحة المنتجات وحساب الدخل -->
+  <div id="section-products" class="content-section active">
+    <h1>المنتجات وحساب الدخل</h1>
+    <div class="pricing-grid" id="products-grid">
+      <!-- سورسات (مشفر) -->
+      <div class="price-card">
+        <h3>ألعاب (مشفر)</h3>
+        <p>السعر: <span>59.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="20" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>تكت (مشفر)</h3>
+        <p>السعر: <span>34.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="15" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>تقييم (مشفر)</h3>
+        <p>السعر: <span>21.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="10" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>ستريك (مشفر)</h3>
+        <p>السعر: <span>11.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="20" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>سستم (مشفر)</h3>
+        <p>السعر: <span>61.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="5" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+
+      <!-- سورسات (دون تشفير) -->
+      <div class="price-card">
+        <h3>ألعاب (دون تشفير)</h3>
+        <p>السعر: <span>79.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="10" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>تكت (دون تشفير)</h3>
+        <p>السعر: <span>54.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="8" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>تقييم (دون تشفير)</h3>
+        <p>السعر: <span>41.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="7" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>ستريك (دون تشفير)</h3>
+        <p>السعر: <span>31.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="10" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+      <div class="price-card">
+        <h3>سستم (دون تشفير)</h3>
+        <p>السعر: <span>81.99</span> ريال</p>
+        <label>المبيعات المتوقعة: <input type="number" value="5" onchange="calculateIncome()"></label>
+        <p>الدخل: <span class="income">0</span> ريال</p>
+        <p class="performance">الأداء: <span class="perf-text">—</span></p>
+      </div>
+    </div>
+    <div class="total-box">
+      <h3>إجمالي الدخل المتوقع: <span id="total-income">0</span> ريال</h3>
+    </div>
+  </div>
+
+  <!-- صفحة التوقعات والنصائح -->
+  <div id="section-tips" class="content-section">
+    <h1>التوقعات والنصائح</h1>
+    <div class="tips-box">
+      <p><strong>التوقعات الشهرية:</strong></p>
+      <ul>
+        <li>منخفض: ~2,495 ريال</li>
+        <li>متوسط: ~4,759 ريال</li>
+        <li>مرتفع: ~7,248 ريال</li>
+      </ul>
+      <p><strong>نصائح لتحسين الدخل:</strong></p>
+      <ul>
+        <li>قدم نسخ مجانية وشروحات مفيدة لجذب العملاء.</li>
+        <li>خطط لإضافة نظام اشتراكات للبوتات للحصول على دخل مستمر.</li>
+        <li>تحديث المنتجات وتحسينها باستمرار يزيد المبيعات.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- صفحة استراتيجية النمو -->
+  <div id="section-strategy" class="content-section">
+    <h1>استراتيجية النمو</h1>
+    <div class="strategy-box">
+      <ol>
+        <li>بيع المنتجات الحالية وتقديم محتوى مجاني لجذب العملاء.</li>
+        <li>بعد 1–2 شهر: إدخال نظام اشتراكات وجعل السورسات القديمة مجانية.</li>
+        <li>بعد 3–6 أشهر: تحديث المنتجات بميزات جديدة والشراء التلقائي من الموقع  .</li>
+      </ol>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showSection(id) {
+  const sections = document.querySelectorAll('.content-section');
+  const navItems = document.querySelectorAll('nav span');
+  sections.forEach(s => s.classList.remove('active'));
+  sections.forEach(s => s.style.display='none');
+  navItems.forEach(n => n.classList.remove('active'));
+  document.getElementById('section-' + id).style.display='block';
+  setTimeout(()=>document.getElementById('section-' + id).classList.add('active'),50);
+  document.getElementById('nav-' + id)?.classList.add('active');
+}
+
+// حساب الدخل تلقائيًا مع التلوين وتوقع الأداء
+function calculateIncome(){
+  let total=0;
+  document.querySelectorAll('.price-card').forEach(card=>{
+    const price=parseFloat(card.querySelector('p span').innerText);
+    const qty=parseInt(card.querySelector('input').value);
+    const income=price*qty;
+    const incomeElem = card.querySelector('.income');
+    const perfElem = card.querySelector('.perf-text');
+    incomeElem.innerText=income.toFixed(2);
+
+    // تحديد الأداء حسب الدخل
+    let perfText='', color='';
+    if(income < 300){ perfText='منخفض'; color='red'; }
+    else if(income < 600){ perfText='متوسط'; color='yellow'; }
+    else { perfText='مرتفع'; color='lime'; }
+
+    incomeElem.style.color=color;
+    perfElem.innerText = perfText;
+    perfElem.style.color = color;
+
+    total+=income;
+  });
+
+  const totalElem = document.getElementById('total-income');
+  totalElem.innerText=total.toFixed(2);
+  if(total < 2495){ totalElem.style.color='red'; }
+  else if(total < 4759){ totalElem.style.color='yellow'; }
+  else { totalElem.style.color='lime'; }
+}
+calculateIncome();
+</script>
+
+</body>
+</html>
